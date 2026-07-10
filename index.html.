@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Priya ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ff6a88, #ff99ac);
+  color: white;
+  overflow: hidden;
+}
+
+.container {
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yes {
+  background: white;
+  color: #ff4d6d;
+}
+
+#no {
+  background: black;
+  color: white;
+  position: absolute;
+}
+
+#proposal {
+  display: none;
+  margin-top: 20px;
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <img src="photo.jpg" class="photo">
+
+  <h1>💖 Hey Priya 💖</h1>
+
+  <button onclick="start()">Open Message ❤️</button>
+
+  <div id="proposal">
+    <p>
+      Hey Priya 💖,<br><br>
+      I don’t know when it started, but you became the most special part of my life. 
+      Your smile makes everything better, and your presence gives me peace.
+    </p>
+
+    <p>
+      Priya, I admire you for who you are — kind, beautiful, and amazing in every way. 
+      I genuinely want you in my life, not just for today, but forever.
+    </p>
+
+    <p>
+      So today, I just want to say this honestly…  
+      💌 I really like you.  
+      Will you be mine? 💖
+    </p>
+
+    <button id="yes" onclick="yes()">YES ❤️</button>
+    <button id="no" onmouseover="moveNo()">NO 😜</button>
+  </div>
+
+</div>
+
+<audio id="music" src="song.mp3"></audio>
+
+<script>
+function start() {
+  document.getElementById("proposal").style.display = "block";
+  document.getElementById("music").play();
+  createHearts();
+}
+
+function yes() {
+  alert("💖 I knew it! Love you 😍");
+}
+
+function moveNo() {
+  let btn = document.getElementById("no");
+  btn.style.top = Math.random()*80 + "vh";
+  btn.style.left = Math.random()*80 + "vw";
+}
+
+function createHearts() {
+  for(let i=0;i<30;i++) {
+    let heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.classList.add("heart");
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*20 + 20) + "px";
+    heart.style.animationDuration = (Math.random()*3 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }
+}
+</script>
+
+</body>
+</html>
