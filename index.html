@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Special Wish 💖</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  text-align: center;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  overflow: hidden;
+}
+
+.container {
+  margin-top: 80px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+button {
+  padding: 12px 25px;
+  margin-top: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background: white;
+  color: #ff4d6d;
+}
+
+#wish {
+  margin-top: 30px;
+  font-size: 26px;
+}
+
+.heart {
+  position: absolute;
+  color: pink;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+  <h1>💖 Send a Special Wish 💖</h1>
+
+  <input type="text" id="name" placeholder="Enter your name"><br>
+  <button onclick="generateLink()">Generate Link 🔗</button>
+
+  <p id="link"></p>
+
+  <button onclick="showWish()">Open Wish ❤️</button>
+
+  <div id="wish"></div>
+</div>
+
+<audio id="music" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
+
+<script>
+// Get name from URL
+const params = new URLSearchParams(window.location.search);
+const sender = params.get"priya";
+
+function generateLink() {
+  const name = document.getElementById("name").value;
+  if(name === "") return alert("Enter name");
+
+  const link = window.location.origin + "?name=" + name;
+  document.getElementById("link").innerHTML =
+    `<br>Share this link:<br><a href="${link}" style="color:white">${link}</a>`;
+}
+
+function showWish() {
+  const music = document.getElementById("music");
+  music.play();
+
+  document.getElementById("wish").innerHTML =
+    `💌 A special message from <b>${sender || "Someone special"}</b><br><br>
+     You are amazing 💖<br>
+     Stay happy always 😊<br>
+     Never stop smiling 🌸`;
+
+  createHearts();
+}
+
+function createHearts() {
+  for(let i=0;i<20;i++) {
+    let heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.classList.add("heart");
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = Math.random()*20 + 20 + "px";
+    heart.style.animationDuration = (Math.random()*3+2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }
+}
+</script>
+
+</body>
+</html>
